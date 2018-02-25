@@ -1,0 +1,52 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryDark">@color/darkTosca</item>
+        <item name="colorAccent">@color/yellow</item>
+    </style>
+
+    <style name="UndepressTabLayout" parent="Widget.Design.TabLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:background">@color/darkTosca</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="tabIndicatorColor">@color/orange</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabPaddingStart">6dp</item>
+        <item name="tabPaddingEnd">6dp</item>
+        <item name="tabBackground">@color/darkTosca</item>
+        <item name="tabSelectedTextColor">@color/tosca</item>
+    </style>
+
+    <style name="ChatsListView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">7dp</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="BubbleChatLinearLayout">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="BubbleChatText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:maxWidth">150dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+
+</resources>

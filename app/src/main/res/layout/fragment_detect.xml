@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darkTosca"
+    tools:context=".DetectFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/half_circle"
+        android:backgroundTint="@color/white" />
+
+    <Button
+        android:id="@+id/detect_button"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shadow_button"
+        android:padding="20dp"
+        android:text="How are you today?"
+        android:textAllCaps="false"
+        android:textColor="@color/orange"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/loading"
+        android:layout_above="@id/detect_button"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:indicatorColor="@color/orange"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:indicatorName="BallPulseIndicator" />
+
+</RelativeLayout>

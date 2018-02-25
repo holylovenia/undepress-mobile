@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/expert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shadow_rounded_corners"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/expert_photo"
+            android:layout_width="90dp"
+            android:layout_height="110dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/expert_default" />
+
+        <TextView
+            android:id="@+id/expert_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/expert_s_name"
+            android:textColor="@color/darkTosca"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/expert_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/expert_name"
+            android:layout_toEndOf="@id/expert_photo"
+            android:text="@string/expert_s_description"
+            android:textAlignment="textEnd"
+            android:textColor="@color/darkTosca"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/expert_details_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/expert_desc"
+            android:layout_margin="@dimen/main_screen_logo_margin"
+            android:background="@drawable/rounded_corners"
+            android:text="@string/details"
+            android:textColor="@color/orange" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MonitorFragment">
+
+
+    <ImageButton
+        android:id="@+id/monitorChangeLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/monitor_date_left"
+        android:layout_toLeftOf="@id/monitorDate"
+        android:background="#FFFFFF"
+        android:layout_marginTop="4dp"
+        android:padding="3dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/monitorDate"
+        android:text="16-Jan-18 - 5-Feb-18"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="10dp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+
+    <ImageButton
+        android:id="@+id/monitorChangeRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/monitor_date_right"
+        android:layout_toRightOf="@id/monitorDate"
+        android:background="#FFFFFF"
+        android:layout_marginTop="4dp"
+        android:padding="3dp"/>
+    
+    <com.github.mikephil.charting.charts.LineChart
+        android:id='@+id/progressChart'
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/monitorDate" />
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.hulahoop.mentalhealth.undepress.ChatActivity">
+
+    <RelativeLayout
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/send_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/rounded_corners"
+            android:padding="@dimen/main_screen_small_padding"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_send_black_24dp"
+            android:tint="@color/orange" />
+
+        <EditText
+            android:id="@+id/type_message"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:layout_toStartOf="@id/send_button"
+            android:background="@drawable/shadow_rounded_corners"
+            android:paddingEnd="20dp"
+            android:paddingStart="20dp"
+            android:textColor="@color/darkTosca"
+            android:textSize="18sp" />
+
+        <ListView
+            android:id="@+id/chatActivity_chatList"
+            style="@style/ChatsListView"
+            android:layout_above="@id/type_message" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

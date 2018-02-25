@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/main_screen_large_padding"
+    tools:context="com.hulahoop.mentalhealth.undepress.LoginActivity">
+
+    <ImageView
+        android:id="@+id/undepress_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/main_screen_small_padding"
+        android:layout_marginTop="@dimen/main_screen_small_padding"
+        android:src="@drawable/undepress" />
+
+    <LinearLayout
+        android:id="@+id/login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/undepress_logo"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/main_screen_small_padding">
+
+        <ImageView
+            android:layout_width="@dimen/main_screen_logo"
+            android:layout_height="@dimen/main_screen_logo"
+            android:layout_margin="@dimen/main_screen_logo_margin"
+            android:src="@drawable/ic_email_black_24dp"
+            android:tint="@color/orange" />
+
+        <EditText
+            android:id="@+id/login_input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/darkTosca"
+            android:hint="@string/enter_your_e_mail"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/darkTosca"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_email"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/main_screen_small_padding">
+
+        <ImageView
+            android:layout_width="@dimen/main_screen_logo"
+            android:layout_height="@dimen/main_screen_logo"
+            android:layout_margin="@dimen/main_screen_logo_margin"
+            android:src="@drawable/ic_lock_black_24dp"
+            android:tint="@color/orange" />
+
+        <EditText
+            android:id="@+id/login_input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/darkTosca"
+            android:hint="@string/enter_your_password"
+            android:inputType="textPassword"
+            android:textColor="@color/darkTosca"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/space_between_login_password_and_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/main_screen_logo"
+        android:layout_below="@id/login_password" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/space_between_login_password_and_button"
+        android:layout_margin="@dimen/main_screen_small_padding"
+        android:background="@drawable/rounded_corners"
+        android:text="@string/login_button"
+        android:textAllCaps="false"
+        android:textColor="@color/orange"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_button"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/main_screen_logo_margin"
+        android:text="@string/forgot_password"
+        android:textAlignment="center"
+        android:textColor="@color/darkTosca"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forgot_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/main_screen_large_padding"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/don_t_have_an_account_yet"
+            android:textAlignment="center"
+            android:textColor="@color/darkTosca" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/main_screen_logo_margin"
+            android:text="@string/create_one"
+            android:textAlignment="center"
+            android:textColor="@color/orange"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.hulahoop.mentalhealth.undepress.ProfileActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/maps"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/maps" />
+
+        <LinearLayout
+            android:id="@+id/expert_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/maps"
+            android:layout_margin="30dp"
+            android:background="@drawable/shadow_rounded_corners"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Dr. Pratama"
+                android:textColor="@color/darkTosca"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textStyle="bold"
+                android:textColor="@color/darkTosca"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cimandiri Street no. 59, Bandung Wetan, Bandung City, West Java"
+                android:textColor="@color/darkTosca"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textStyle="bold"
+                android:textColor="@color/darkTosca"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="087878787878"
+                android:textColor="@color/darkTosca"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="E-mail"
+                android:textStyle="bold"
+                android:textColor="@color/darkTosca"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="pratama@gmail.com"
+                android:textColor="@color/darkTosca"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Experience"
+                android:textStyle="bold"
+                android:textColor="@color/darkTosca"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5-6 years"
+                android:textColor="@color/darkTosca"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@id/expert_details"
+            android:layout_width="match_parent"
+            android:paddingStart="30dp"
+            android:layout_marginBottom="30dp"
+            android:paddingEnd="30dp"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_weight="3"
+                android:id="@+id/book_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/orange"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/rounded_corners"
+                android:padding="@dimen/main_screen_small_padding"
+                android:text="Make an appointment"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/message_button"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corners"
+                android:padding="@dimen/main_screen_small_padding"
+                android:text="Chat"
+                android:textColor="@color/orange" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
