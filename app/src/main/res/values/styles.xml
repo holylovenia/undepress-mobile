@@ -6,6 +6,15 @@
         <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryDark">@color/darkTosca</item>
         <item name="colorAccent">@color/yellow</item>
+        <item name="android:actionBarStyle">@style/UndepressActionBar</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="actionButtonStyle">@style/UndepressIcon</item>
+    </style>
+
+    <style name="UndepressActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:background">@color/orange</item>
     </style>
 
     <style name="UndepressTabLayout" parent="Widget.Design.TabLayout">
@@ -18,8 +27,18 @@
         <item name="tabIndicatorHeight">4dp</item>
         <item name="tabPaddingStart">6dp</item>
         <item name="tabPaddingEnd">6dp</item>
+        <item name="tabTextAppearance">@style/UndepressTabText</item>
         <item name="tabBackground">@color/darkTosca</item>
-        <item name="tabSelectedTextColor">@color/tosca</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+    <style name="UndepressTabText" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textColor">@color/tosca</item>
+    </style>
+
+    <style name="UndepressIcon" parent="Widget.AppCompat.ActionButton">
+        <item name="android:width">10dp</item>
+        <item name="android:height">10dp</item>
     </style>
 
     <style name="ChatsListView">
@@ -46,7 +65,6 @@
         <item name="android:padding">10dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
-
 
 
 </resources>
