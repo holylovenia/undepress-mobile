@@ -1,4 +1,4 @@
-package com.hulahoop.mentalhealth.undepress;
+package com.hulahoop.mentalhealth.undepress.models;
 
 public class ChatBubble {
     private String messageContent;
