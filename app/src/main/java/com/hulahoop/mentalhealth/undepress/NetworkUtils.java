@@ -1,15 +1,12 @@
 package com.hulahoop.mentalhealth.undepress;
 
-import android.os.HandlerThread;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -19,10 +16,12 @@ import java.net.URL;
 public class NetworkUtils {
     private static final String BASE_URL = "http://undepress.southeastasia.cloudapp.azure.com/";
 
-    public static String getResponse(String path, String requestMethod, String urlParams, String accessToken) {
+    public static String getResponse(String path, String requestMethod, String formParameters,
+                                     String
+                                             accessToken) {
         HttpURLConnection urlConnection = null;
-        String result = null;
-        BufferedReader br = null;
+        BufferedReader bufferedReader = null;
+        String result;
 
         try {
             URL requestURL = new URL(BASE_URL + path);
@@ -36,35 +35,35 @@ public class NetworkUtils {
             urlConnection.connect();
             Log.d("NetworkUtils", "Done_Connecting");
 
-            if (urlParams != null) {
+            if (formParameters != null) {
                 DataOutputStream out = new DataOutputStream(urlConnection.getOutputStream());
-                out.writeBytes(urlParams);
+                out.writeBytes(formParameters);
                 out.flush();
                 out.close();
             }
 
             int HttpResult = urlConnection.getResponseCode();
-            StringBuffer sb = new StringBuffer();
+            StringBuffer stringBuffer = new StringBuffer();
 
             if (HttpResult == HttpURLConnection.HTTP_OK) {
-                br = new BufferedReader(new InputStreamReader(
+                bufferedReader = new BufferedReader(new InputStreamReader(
                         urlConnection.getInputStream(), "utf-8"));
                 String line = null;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line + "\n");
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuffer.append(line + "\n");
                 }
-                br.close();
+                bufferedReader.close();
             } else {
-                br = new BufferedReader(new InputStreamReader(
+                bufferedReader = new BufferedReader(new InputStreamReader(
                         urlConnection.getErrorStream(), "utf-8"));
                 String line = null;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line + "\n");
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuffer.append(line + "\n");
                 }
-                br.close();
+                bufferedReader.close();
             }
-            Log.d("NetworkUtils_RESULT", sb.toString());
-            result = sb.toString();
+            Log.d("NetworkUtils_RESULT", stringBuffer.toString());
+            result = stringBuffer.toString();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,9 +73,9 @@ public class NetworkUtils {
             if (urlConnection != null) {
                 urlConnection.disconnect();
             }
-            if (br != null) {
+            if (bufferedReader != null) {
                 try {
-                    br.close();
+                    bufferedReader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

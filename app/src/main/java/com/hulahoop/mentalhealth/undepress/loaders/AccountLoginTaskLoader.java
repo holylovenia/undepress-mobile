@@ -1,8 +1,10 @@
-package com.hulahoop.mentalhealth.undepress;
+package com.hulahoop.mentalhealth.undepress.loaders;
 
-import android.support.v4.content.AsyncTaskLoader;
 import android.content.Context;
+import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
+
+import com.hulahoop.mentalhealth.undepress.NetworkUtils;
 
 import java.net.URLEncoder;
 
@@ -28,14 +30,14 @@ public class AccountLoginTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        String urlParameter = null;
+        String formParameters = null;
         try {
-            urlParameter = "email=" + URLEncoder.encode(mEmail, "UTF-8");
-            urlParameter += "&password=" + URLEncoder.encode(mPassword, "UTF-8");
+            formParameters = "email=" + URLEncoder.encode(mEmail, "UTF-8");
+            formParameters += "&password=" + URLEncoder.encode(mPassword, "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Log.d("AccountLogin Param", urlParameter);
-        return NetworkUtils.getResponse("account/login", "POST", urlParameter, "");
+        Log.d("AccountLogin Param", formParameters);
+        return NetworkUtils.getResponse("account/login", "POST", formParameters, "");
     }
 }

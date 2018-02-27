@@ -30,7 +30,8 @@ public class ExpertsAdapter extends RecyclerView.Adapter<ExpertsAdapter.ViewHold
 
     @Override
     public ExpertsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.expert_list, parent, false));
+        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.expert_list, parent,
+                false));
     }
 
     @Override

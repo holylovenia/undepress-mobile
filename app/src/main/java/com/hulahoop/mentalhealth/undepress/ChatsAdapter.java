@@ -18,7 +18,8 @@ public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
     private Activity activity;
     private List<ChatBubble> chats;
 
-    public ChatsAdapter(@NonNull Activity activity, @LayoutRes int resource, List<ChatBubble> chats) {
+    public ChatsAdapter(@NonNull Activity activity, @LayoutRes int resource, List<ChatBubble>
+            chats) {
         super(activity, resource, chats);
         this.activity = activity;
         this.chats = chats;
@@ -32,7 +33,8 @@ public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         ViewHolder holder;
-        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity
+                .LAYOUT_INFLATER_SERVICE);
 
         int layoutResource = 0;
         ChatBubble chatBubble = getItem(position);

@@ -1,8 +1,10 @@
-package com.hulahoop.mentalhealth.undepress;
+package com.hulahoop.mentalhealth.undepress.loaders;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
+
+import com.hulahoop.mentalhealth.undepress.NetworkUtils;
 
 import java.net.URLEncoder;
 
@@ -32,15 +34,16 @@ public class ChatSendTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        String urlParameter = null;
+        String formParameters = null;
         try {
-            urlParameter = "receiver_id=" + URLEncoder.encode(String.valueOf(mReceiverId), "UTF-8");
-            urlParameter += "&message=" + URLEncoder.encode(mMessage, "UTF-8");
-            urlParameter += "&timestamp=" + URLEncoder.encode(mTimestamp, "UTF-8");
+            formParameters = "receiver_id=" + URLEncoder.encode(String.valueOf(mReceiverId),
+                    "UTF-8");
+            formParameters += "&message=" + URLEncoder.encode(mMessage, "UTF-8");
+            formParameters += "&timestamp=" + URLEncoder.encode(mTimestamp, "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Log.d("ChatSend Param", urlParameter);
-        return NetworkUtils.getResponse("chat/send", "POST", urlParameter, mAccessToken);
+        Log.d("ChatSend Param", formParameters);
+        return NetworkUtils.getResponse("chat/send", "POST", formParameters, mAccessToken);
     }
 }

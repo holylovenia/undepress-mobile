@@ -1,16 +1,15 @@
 package com.hulahoop.mentalhealth.undepress;
 
-import android.support.v4.content.Loader;
-import android.support.v4.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
-
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -19,7 +18,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+import com.hulahoop.mentalhealth.undepress.loaders.AccountLoginTaskLoader;
+
+public class LoginActivity extends AppCompatActivity implements LoaderManager
+        .LoaderCallbacks<String> {
 
     Button loginButton;
     EditText mInputEmail, mInputPassword;
@@ -42,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
         loginButton = (Button) findViewById(R.id.login_button);
 
         mPreferences = getSharedPreferences("authorization", MODE_PRIVATE);
-        //check connectivity
+
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
@@ -58,10 +60,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
     }
 
     public void login(View view) {
-        String email, password;
-        email = mInputEmail.getText().toString();
-        password = mInputPassword.getText().toString();
-        boolean ok = true;
+        String email = mInputEmail.getText().toString();
+        String password = mInputPassword.getText().toString();
+        boolean valid = true;
 
         Log.d("login_activity: ", email);
         Log.d("login_activity: ", password);
@@ -71,13 +72,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
         if (networkInfo != null && networkInfo.isConnected()) {
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 mInputEmail.setError("Email is wrong");
-                ok = false;
+                valid = false;
             }
             if (TextUtils.isEmpty(password)) {
                 mInputPassword.setError("Password is empty");
-                ok = false;
+                valid = false;
             }
-            if (ok) {
+            if (valid) {
                 Bundle requestBundle = new Bundle();
                 requestBundle.putString("email", email);
                 requestBundle.putString("password", password);
@@ -91,13 +92,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
 
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
-        return new AccountLoginTaskLoader(this, args.getString("email"), args.getString("password"));
+        return new AccountLoginTaskLoader(this, args.getString("email"), args.getString
+                ("password"));
     }
 
     @Override
-    public void onLoadFinished(Loader<String> loader, String data) {
+    public void onLoadFinished(Loader<String> loader, String access_token) {
         try {
-            String access_token = data;
             SharedPreferences.Editor preferencesEditor = mPreferences.edit();
             preferencesEditor.putString("access_token", access_token);
             preferencesEditor.apply();

@@ -1,17 +1,18 @@
-package com.hulahoop.mentalhealth.undepress;
+package com.hulahoop.mentalhealth.undepress.loaders;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
-import android.util.Log;
+
+import com.hulahoop.mentalhealth.undepress.NetworkUtils;
 
 /**
  * Created by agoun on 2/27/2018.
  */
 
-public class SocmedTaskLoader extends AsyncTaskLoader<String> {
+public class AppointmentTaskLoader extends AsyncTaskLoader<String> {
     private String mAccessToken;
 
-    public SocmedTaskLoader(Context context, String accessToken) {
+    public AppointmentTaskLoader(Context context, String accessToken) {
         super(context);
         mAccessToken = accessToken;
     }
@@ -23,8 +24,6 @@ public class SocmedTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        String urlParameter = null;
-        Log.d("Socmed Param", urlParameter);
-        return NetworkUtils.getResponse("socmed/", "GET", urlParameter, mAccessToken);
+        return NetworkUtils.getResponse("appointment/", "GET", null, mAccessToken);
     }
 }

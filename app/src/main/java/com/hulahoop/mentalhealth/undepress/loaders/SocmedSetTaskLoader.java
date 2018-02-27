@@ -1,8 +1,10 @@
-package com.hulahoop.mentalhealth.undepress;
+package com.hulahoop.mentalhealth.undepress.loaders;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
+
+import com.hulahoop.mentalhealth.undepress.NetworkUtils;
 
 import java.net.URLEncoder;
 
@@ -32,21 +34,21 @@ public class SocmedSetTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        String urlParameter = null;
+        String formParameters = null;
         try {
             if (mTwitter != null) {
-                urlParameter = "twitter=" + URLEncoder.encode(mTwitter, "UTF-8");
+                formParameters = "&twitter=" + URLEncoder.encode(mTwitter, "UTF-8");
             }
             if (mFacebook != null) {
-                urlParameter += "&facebook=" + URLEncoder.encode(mFacebook, "UTF-8");
+                formParameters += "&facebook=" + URLEncoder.encode(mFacebook, "UTF-8");
             }
             if (mInstagram != null) {
-                urlParameter += "&instagram=" + URLEncoder.encode(mInstagram, "UTF-8");
+                formParameters += "&instagram=" + URLEncoder.encode(mInstagram, "UTF-8");
             }
         } catch (Exception e) {
             e.printStackTrace();
-        Log.d("SocmedSet Param", urlParameter);
         }
-        return NetworkUtils.getResponse("socmed/set", "POST", urlParameter, mAccessToken);
+        Log.d("SocmedSet Param", formParameters);
+        return NetworkUtils.getResponse("socmed/set", "POST", formParameters, mAccessToken);
     }
 }

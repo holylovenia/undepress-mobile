@@ -1,8 +1,10 @@
-package com.hulahoop.mentalhealth.undepress;
+package com.hulahoop.mentalhealth.undepress.loaders;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
+
+import com.hulahoop.mentalhealth.undepress.NetworkUtils;
 
 /**
  * Created by agoun on 2/27/2018.
@@ -25,9 +27,8 @@ public class ChatTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        String urlParameter = null;
-        String bodyParameter = "?sender_id" + mSenderId;
-        Log.d("Chat Param", urlParameter);
-        return NetworkUtils.getResponse("chat/" + bodyParameter, "GET", urlParameter, mAccessToken);
+        String urlParameters = "?sender_id" + mSenderId;
+        Log.d("Chat Param", urlParameters);
+        return NetworkUtils.getResponse("chat" + urlParameters + "/", "GET", null, mAccessToken);
     }
 }
