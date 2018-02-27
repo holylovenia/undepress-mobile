@@ -87,7 +87,8 @@
         android:text="@string/login_button"
         android:textAllCaps="false"
         android:textColor="@color/orange"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:onClick="login"/>
 
     <TextView
         android:id="@+id/forgot_password"
