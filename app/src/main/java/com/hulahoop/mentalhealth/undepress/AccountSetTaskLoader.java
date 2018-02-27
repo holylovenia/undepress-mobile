@@ -90,6 +90,6 @@ public class AccountSetTaskLoader extends AsyncTaskLoader<String> {
             e.printStackTrace();
         }
         Log.d("Account Param", urlParameter);
-        return NetworkUtils.getResponse("account/", "GET", urlParameter, mAccessToken);
+        return NetworkUtils.getResponse("account/set", "POST", urlParameter, mAccessToken);
     }
 }
