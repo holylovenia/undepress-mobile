@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hulahoop.mentalhealth.undepress.models.Expert;
+
 import java.util.ArrayList;
 
 /**

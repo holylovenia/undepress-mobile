@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.hulahoop.mentalhealth.undepress.models.ChatBubble;
+
 import java.util.List;
 
 public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
