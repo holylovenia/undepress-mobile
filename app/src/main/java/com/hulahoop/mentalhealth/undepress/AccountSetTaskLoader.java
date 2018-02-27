@@ -1,5 +1,3 @@
-
-
 package com.hulahoop.mentalhealth.undepress;
 
 import android.content.Context;
@@ -27,7 +25,7 @@ public class AccountSetTaskLoader extends AsyncTaskLoader<String> {
 
     public AccountSetTaskLoader(Context context, String accessToken, String email, String password,
                                 String name, String
-                                        address, String phone, boolean isExpert, boolean
+                                        address, String phone, Boolean isExpert, Boolean
                                         isExpertVerified, String
                                         expertDescription, String expertExperience, String
                                         expertLocation) {
@@ -57,16 +55,16 @@ public class AccountSetTaskLoader extends AsyncTaskLoader<String> {
             if (mEmail != null) {
                 urlParameter = "email=" + URLEncoder.encode(mEmail, "UTF-8");
             }
-            if (mEmail != null) {
+            if (mPassword != null) {
                 urlParameter += "&password=" + URLEncoder.encode(mPassword, "UTF-8");
             }
-            if (mEmail != null) {
+            if (mName != null) {
                 urlParameter += "&name=" + URLEncoder.encode(mName, "UTF-8");
             }
-            if (mEmail != null) {
+            if (mAddress != null) {
                 urlParameter += "&address=" + URLEncoder.encode(mAddress, "UTF-8");
             }
-            if (mEmail != null) {
+            if (mPhone != null) {
                 urlParameter += "&phone=" + URLEncoder.encode(mPhone, "UTF-8");
             }
             if (mIsExpert) {
@@ -75,15 +73,15 @@ public class AccountSetTaskLoader extends AsyncTaskLoader<String> {
             if (mIsExpertVerified) {
                 urlParameter += "&is_expert_verified" + URLEncoder.encode("True", "UTF-8");
             }
-            if (mEmail != null) {
+            if (mExpertDescription != null) {
                 urlParameter += "&expert_description=" + URLEncoder.encode(mExpertDescription,
                         "UTF-8");
             }
-            if (mEmail != null) {
+            if (mExpertExperience != null) {
                 urlParameter += "&expert_experience=" + URLEncoder.encode(mExpertExperience,
                         "UTF-8");
             }
-            if (mEmail != null) {
+            if (mExpertLocation != null) {
                 urlParameter += "&expert_location=" + URLEncoder.encode(mExpertLocation, "UTF-8");
             }
         } catch (Exception e) {
