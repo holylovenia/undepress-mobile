@@ -8,12 +8,13 @@ import java.util.Map;
  */
 
 public class Patient extends User {
-    private Map socialMedia;
     private final String facebookKey = "facebook";
     private final String twitterKey = "twitter";
     private final String instagramKey = "instagram";
+    private Map socialMedia;
 
-    public Patient(String name, String email, String address, String phoneNumber, String facebook, String twitter, String instagram) {
+    public Patient(String name, String email, String address, String phoneNumber, String
+            facebook, String twitter, String instagram) {
         super(name, email, address, phoneNumber);
         socialMedia = new HashMap();
         socialMedia.put(facebookKey, facebook);
