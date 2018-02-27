@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager.Lo
 
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
-        return new FetchAccessTokenTaskLoader(this, args.getString("email"), args.getString("password"));
+        return new AccountLoginTaskLoader(this, args.getString("email"), args.getString("password"));
     }
 
     @Override

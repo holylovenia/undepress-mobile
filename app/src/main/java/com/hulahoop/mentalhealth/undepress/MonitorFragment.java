@@ -66,13 +66,13 @@ public class MonitorFragment extends Fragment {
         lineChart.getAxisRight().setEnabled(false);
 
         ArrayList<Entry> yValues = new ArrayList<>();
-        yValues.add(new Entry(0,6));
-        yValues.add(new Entry(1,5));
-        yValues.add(new Entry(2,1));
-        yValues.add(new Entry(3,9));
-        yValues.add(new Entry(4,2));
-        yValues.add(new Entry(5,4));
-        yValues.add(new Entry(6,8));
+        yValues.add(new Entry(0, 6));
+        yValues.add(new Entry(1, 5));
+        yValues.add(new Entry(2, 1));
+        yValues.add(new Entry(3, 9));
+        yValues.add(new Entry(4, 2));
+        yValues.add(new Entry(5, 4));
+        yValues.add(new Entry(6, 8));
 
         LineDataSet dataSet1 = new LineDataSet(yValues, "Depression Symptom Tracker");
         dataSet1.setFillAlpha(110);
@@ -90,8 +90,8 @@ public class MonitorFragment extends Fragment {
 
         lineChart.setData(data);
 
-        String[] values = new String[] {"16-Jan", "23-Jan", "26-Jan", "29-Jan", "31-Jan",
-                                        "2-Feb", "5-Feb"};
+        String[] values = new String[]{"16-Jan", "23-Jan", "26-Jan", "29-Jan", "31-Jan",
+                "2-Feb", "5-Feb"};
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setValueFormatter(new MyXAxisValueFormatter(values));

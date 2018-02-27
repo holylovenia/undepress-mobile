@@ -36,7 +36,7 @@ public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
         ChatBubble chatBubble = getItem(position);
 
         if (chatBubble != null) {
-            if(!chatBubble.isSignedInUserMessage()) {
+            if (!chatBubble.isSignedInUserMessage()) {
                 layoutResource = R.layout.chat_bubble_left;
             } else {
                 layoutResource = R.layout.chat_bubble_right;

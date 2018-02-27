@@ -19,7 +19,7 @@ import java.net.URL;
 public class NetworkUtils {
     private static final String BASE_URL = "http://undepress.southeastasia.cloudapp.azure.com/";
 
-    public static String getStringResponse(String path, String requestMethod, String urlParams, String accessToken) {
+    public static String getResponse(String path, String requestMethod, String urlParams, String accessToken) {
         HttpURLConnection urlConnection = null;
         String result = null;
         BufferedReader br = null;
@@ -48,7 +48,7 @@ public class NetworkUtils {
 
             if (HttpResult == HttpURLConnection.HTTP_OK) {
                 br = new BufferedReader(new InputStreamReader(
-                        urlConnection.getInputStream(),"utf-8"));
+                        urlConnection.getInputStream(), "utf-8"));
                 String line = null;
                 while ((line = br.readLine()) != null) {
                     sb.append(line + "\n");
@@ -56,7 +56,7 @@ public class NetworkUtils {
                 br.close();
             } else {
                 br = new BufferedReader(new InputStreamReader(
-                        urlConnection.getErrorStream(),"utf-8"));
+                        urlConnection.getErrorStream(), "utf-8"));
                 String line = null;
                 while ((line = br.readLine()) != null) {
                     sb.append(line + "\n");
