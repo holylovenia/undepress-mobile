@@ -25,6 +25,6 @@ public class ExpertTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        return NetworkUtils.getResponse("expert/", "GET", null, mAccessToken);
+        return NetworkUtils.getResponse("expert", "GET", null, mAccessToken);
     }
 }

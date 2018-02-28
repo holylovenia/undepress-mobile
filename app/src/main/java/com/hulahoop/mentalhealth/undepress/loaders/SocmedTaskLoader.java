@@ -24,6 +24,6 @@ public class SocmedTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        return NetworkUtils.getResponse("socmed/", "GET", null, mAccessToken);
+        return NetworkUtils.getResponse("socmed", "GET", null, mAccessToken);
     }
 }

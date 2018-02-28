@@ -27,8 +27,8 @@ public class ChatTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        String urlParameters = "?their_id" + mTheirId;
+        String urlParameters = "?their_id=" + mTheirId;
         Log.d("Chat Param", urlParameters);
-        return NetworkUtils.getResponse("chat/" + urlParameters, "GET", null, mAccessToken);
+        return NetworkUtils.getResponse("chat" + urlParameters, "GET", null, mAccessToken);
     }
 }

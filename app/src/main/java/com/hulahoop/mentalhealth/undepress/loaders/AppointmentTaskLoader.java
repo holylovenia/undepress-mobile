@@ -24,6 +24,6 @@ public class AppointmentTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        return NetworkUtils.getResponse("appointment/", "GET", null, mAccessToken);
+        return NetworkUtils.getResponse("appointment", "GET", null, mAccessToken);
     }
 }

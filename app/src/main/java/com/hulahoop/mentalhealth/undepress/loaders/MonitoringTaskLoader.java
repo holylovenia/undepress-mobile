@@ -24,6 +24,6 @@ public class MonitoringTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        return NetworkUtils.getResponse("monitoring/", "GET", null, mAccessToken);
+        return NetworkUtils.getResponse("monitoring", "GET", null, mAccessToken);
     }
 }

@@ -24,6 +24,6 @@ public class AccountTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        return NetworkUtils.getResponse("account/", "GET", null, mAccessToken);
+        return NetworkUtils.getResponse("account", "GET", null, mAccessToken);
     }
 }

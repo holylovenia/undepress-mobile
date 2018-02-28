@@ -44,6 +44,6 @@ public class ChatSendTaskLoader extends AsyncTaskLoader<String> {
             e.printStackTrace();
         }
         Log.d("ChatSend Param", formParameters);
-        return NetworkUtils.getResponse("chat/send/", "POST", formParameters, mAccessToken);
+        return NetworkUtils.getResponse("chat/send", "POST", formParameters, mAccessToken);
     }
 }
