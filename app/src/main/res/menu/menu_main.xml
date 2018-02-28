@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_twitter"
+        android:orderInCategory="1"
+        android:title="@string/twitter"
+        android:icon="@drawable/twitter"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_facebook"
+        android:icon="@drawable/facebook"
+        android:orderInCategory="2"
+        android:title="@string/facebook"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_instagram"
+        android:icon="@drawable/instagram"
+        android:orderInCategory="3"
+        android:title="@string/instagram"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="4"
+        android:title="@string/log_out"
+        app:showAsAction="never" />
+
+</menu>

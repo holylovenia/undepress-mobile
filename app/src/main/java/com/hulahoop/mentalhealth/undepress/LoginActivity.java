@@ -33,20 +33,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mInputEmail = (EditText) findViewById(R.id.login_input_email);
-        mInputPassword = (EditText) findViewById(R.id.login_input_password);
+        mInputEmail = findViewById(R.id.login_input_email);
+        mInputPassword = findViewById(R.id.login_input_password);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.hide();
         }
 
-        loginButton = (Button) findViewById(R.id.login_button);
-
         mPreferences = getSharedPreferences("authorization", MODE_PRIVATE);
 
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (connectivityManager != null) {
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        }
 
         if (mPreferences.contains("access_token")) {
             Intent intent = new Intent(this, MainActivity.class);
@@ -57,6 +57,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager
         if (getSupportLoaderManager().getLoader(0) != null) {
             getSupportLoaderManager().initLoader(0, null, this);
         }
+
+        loginButton = findViewById(R.id.login_button);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login(v);
+            }
+        });
     }
 
     public void login(View view) {
