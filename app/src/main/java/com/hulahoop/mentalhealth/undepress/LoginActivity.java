@@ -107,13 +107,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager
     @Override
     public void onLoadFinished(Loader<String> loader, String access_token) {
         try {
-            SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-            preferencesEditor.putString("access_token", access_token);
-            preferencesEditor.apply();
+            if (!access_token.equals("ACCOUNT_LOGIN_INVALID")) {
+                SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+                preferencesEditor.putString("access_token", access_token);
+                preferencesEditor.apply();
 
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
         } catch (Exception e) {
             Toast.makeText(this, "credential_incorrect", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
