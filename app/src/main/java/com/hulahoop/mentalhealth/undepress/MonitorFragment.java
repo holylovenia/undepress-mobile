@@ -69,7 +69,7 @@ public class MonitorFragment extends Fragment {
         yValues.add(new Entry(5, 4));
         yValues.add(new Entry(6, 8));
 
-        LineDataSet dataSet1 = new LineDataSet(yValues, "Depression Symptom Tracker");
+        LineDataSet dataSet1 = new LineDataSet(yValues, "Depression Symptoms Tracker");
         dataSet1.setFillAlpha(110);
         dataSet1.setColor(getResources().getColor(R.color.orange));
         dataSet1.setLineWidth(3f);

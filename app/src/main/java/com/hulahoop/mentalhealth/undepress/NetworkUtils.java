@@ -23,6 +23,7 @@ public class NetworkUtils {
         String result;
 
         try {
+//            Log.d("NetworkUtils Parameter", formParameters);
             URL requestURL = new URL(BASE_URL + path);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod(requestMethod);

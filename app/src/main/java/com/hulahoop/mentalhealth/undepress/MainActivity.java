@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 break;
             case R.id.action_logout:
                 logout();
-                Toast toast = Toast.makeText(getApplicationContext(), "hahahaha", Toast.LENGTH_SHORT);
-                toast.show();
+//                Toast toast = Toast.makeText(getApplicationContext(), "hahahaha", Toast.LENGTH_SHORT);
+//                toast.show();
                 break;
             default:
                 break;
