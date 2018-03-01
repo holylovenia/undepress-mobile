@@ -6,6 +6,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,13 +28,22 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         mInputEmail = findViewById(R.id.register_input_email);
         mInputPassword = findViewById(R.id.register_input_password);
 
-        if(isThereAnyBlankField()) {
-            Toast.makeText(this, "Please fill the blank field(s)", Toast.LENGTH_SHORT).show();
-        } else {
-            getSupportLoaderManager().initLoader(0, null, this);
-        }
+        registerButton = findViewById(R.id.register_button);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isThereAnyBlankField()) {
+                    Toast.makeText(getApplicationContext(), "Please fill the blank field(s)", Toast.LENGTH_SHORT).show();
+                } else {
+                    fetch();
+                }
+            }
+        });
     }
 
+    public void fetch() {
+        getSupportLoaderManager().initLoader(3, null, this);
+    }
     private boolean isThereAnyBlankField() {
         return mInputName.getText().toString().trim().isEmpty() || mInputAddress.getText().toString().trim().isEmpty() || mInputPhone.getText().toString().trim().isEmpty() || mInputEmail.getText().toString().trim().isEmpty() || mInputPassword.getText().toString().trim().isEmpty();
     }
