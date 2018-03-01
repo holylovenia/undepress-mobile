@@ -4,6 +4,7 @@ package com.hulahoop.mentalhealth.undepress;
 import android.app.Activity;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +13,22 @@ import android.widget.TextView;
 
 import com.hulahoop.mentalhealth.undepress.models.ChatBubble;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
     private Activity activity;
-    private List<ChatBubble> chats;
+    private ArrayList<ChatBubble> chats;
 
-    public ChatsAdapter(@NonNull Activity activity, @LayoutRes int resource, List<ChatBubble>
+    public ChatsAdapter(@NonNull Activity activity, @LayoutRes int resource, ArrayList<ChatBubble>
             chats) {
         super(activity, resource, chats);
         this.activity = activity;
         this.chats = chats;
     }
 
-    public void setChats(List<ChatBubble> chats) {
+    public void setChats(ArrayList<ChatBubble> chats) {
         this.chats = chats;
         notifyDataSetChanged();
     }
@@ -38,7 +41,8 @@ public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
                 .LAYOUT_INFLATER_SERVICE);
 
         int layoutResource = 0;
-        ChatBubble chatBubble = getItem(position);
+        ChatBubble chatBubble = chats.get(position);
+        Log.d("CHAT BUBBLE", chatBubble.getMessageContent());
 
         if (chatBubble != null) {
             if (!chatBubble.isSignedInUserMessage()) {
@@ -51,12 +55,9 @@ public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
         if (inflater != null) {
             convertView = inflater.inflate(layoutResource, parent, false);
         }
-        holder = new ViewHolder(convertView);
-        convertView.setTag(holder);
+        holder = new ViewHolder(convertView, chatBubble);
 
-        if (chatBubble != null) {
-            holder.message.setText(chatBubble.getMessageContent());
-        }
+        convertView.setTag(holder);
 
         return convertView;
     }
@@ -64,8 +65,9 @@ public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
     private class ViewHolder {
         private TextView message;
 
-        public ViewHolder(View view) {
-            message = view.findViewById(R.id.bubbleChat_message);
+        public ViewHolder(View view, ChatBubble chatBubble) {
+            message = view.findViewById(R.id.chat_message);
+            message.setText(chatBubble.getMessageContent());
         }
     }
 }

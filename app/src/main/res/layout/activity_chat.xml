@@ -11,8 +11,7 @@
         android:id="@+id/send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_alignParentBottom="true">
 
         <ImageButton
             android:id="@+id/send_button"
@@ -29,7 +28,7 @@
             android:id="@+id/type_message"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_toStartOf="@id/send_button"
             android:background="@drawable/shadow_rounded_corners"
             android:paddingEnd="20dp"
@@ -37,12 +36,11 @@
             android:textColor="@color/darkTosca"
             android:textSize="18sp" />
 
-        <ListView
-            android:id="@+id/chat_listview"
-            style="@style/ChatsListView"
-            android:layout_above="@id/type_message" />
-
-
     </RelativeLayout>
+
+    <ListView
+        android:id="@+id/chat_listview"
+        style="@style/ChatsListView"
+        android:layout_above="@id/send" />
 
 </RelativeLayout>

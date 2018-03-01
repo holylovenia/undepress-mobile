@@ -12,7 +12,7 @@
         android:background="@drawable/chat_bubble_right">
 
         <TextView
-            android:id="@+id/bubbleChat_message"
+            android:id="@+id/chat_message"
             style="@style/BubbleChatText" />
 
     </LinearLayout>

@@ -70,6 +70,7 @@ public class ExpertsFragment extends Fragment implements LoaderManager.LoaderCal
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
         try {
+            experts.clear();
             Log.d("ExpertTaskLoader", data);
             JSONArray expertsJsonArray = new JSONArray(data);
             JSONObject currentExpertJsonObject;
