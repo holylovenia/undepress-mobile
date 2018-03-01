@@ -99,7 +99,7 @@ public class DetectFragment extends Fragment implements LoaderManager.LoaderCall
             Log.d("Symptoms9", Integer.toString(detectionJSONArray.getInt(8)));
 
             for (int i = 0; i < 9; i++) {
-                verdict.add(detectionJSONArray.getInt(i));;
+                verdict.add(detectionJSONArray.getInt(i));
             }
 
         } catch (JSONException e) {
