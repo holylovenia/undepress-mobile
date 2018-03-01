@@ -35,7 +35,6 @@ public class DetectFragment extends Fragment implements LoaderManager.LoaderCall
     private SharedPreferences mPreferences;
     private Symptoms symptoms;
     private ArrayList<Integer> verdict;
-    private ArrayList<String> symptomDescription;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -52,8 +51,7 @@ public class DetectFragment extends Fragment implements LoaderManager.LoaderCall
         loadingIndicatorView = view.findViewById(R.id.loading);
 
         verdict = new ArrayList<>();
-        symptomDescription = new ArrayList<>();
-        symptoms = new Symptoms(verdict, symptomDescription);
+        symptoms = new Symptoms(verdict);
 
         detectButton = view.findViewById(R.id.detect_button);
         detectButton.setOnClickListener(new View.OnClickListener() {
@@ -103,15 +101,6 @@ public class DetectFragment extends Fragment implements LoaderManager.LoaderCall
             for (int i = 0; i < 9; i++) {
                 verdict.add(detectionJSONArray.getInt(i));;
             }
-            symptomDescription.add("Depressed mood nearly everyday");
-            symptomDescription.add("Losing interest or pleasure in all activities");
-            symptomDescription.add("Significant weight loss or gain");
-            symptomDescription.add("Insomnia/hypersomnia");
-            symptomDescription.add("Psychomotor agitation/retardation");
-            symptomDescription.add("Loss of energy or fatigue");
-            symptomDescription.add("Excessive or inappropriate feelings of worthlessness/guilt");
-            symptomDescription.add("Unable to concentrate or indecisiveness");
-            symptomDescription.add("Recurrent thoughts of death");
 
         } catch (JSONException e) {
             e.printStackTrace();

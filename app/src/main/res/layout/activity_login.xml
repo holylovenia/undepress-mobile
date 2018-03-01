@@ -117,6 +117,7 @@
             android:textColor="@color/darkTosca" />
 
         <TextView
+            android:id="@+id/create_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_screen_logo_margin"

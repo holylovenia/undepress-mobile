@@ -15,6 +15,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_screen_logo_margin"
@@ -32,11 +33,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/main_screen_logo_margin"
+                android:text="Based on DSM-5, you "
+                android:textColor="@color/darkTosca"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/depression_verdict"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="have"
+                android:textColor="@color/orange"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="depression symptoms."
+            android:textColor="@color/darkTosca"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/main_screen_logo_margin"
                 android:text="You are experiencing"
                 android:textColor="@color/darkTosca"
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/number_of_symptoms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="6 of 9"
@@ -58,6 +91,7 @@
             android:layout_height="20dp" />
 
         <TextView
+            android:id="@+id/symptoms_details"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/main_screen_small_padding"
             android:textColor="@color/white"

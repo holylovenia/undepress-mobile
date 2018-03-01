@@ -13,12 +13,16 @@ public class Patient extends User {
     private final String instagramKey = "instagram";
     private Map<String, String> socialMedia;
 
-    public Patient(int id, String name, String email, String address, String phoneNumber, String
-            twitter, String facebook, String instagram) {
+    public Patient(int id, String name, String email, String address, String phoneNumber) {
         super(id, name, email, address, phoneNumber);
         socialMedia = new HashMap<String, String>();
-        socialMedia.put(twitterKey, twitter);
-        socialMedia.put(facebookKey, facebook);
-        socialMedia.put(instagramKey, instagram);
+    }
+
+    public Map<String, String> getSocialMedia() {
+        return socialMedia;
+    }
+
+    public void setSocialMedia(Map<String, String> socialMedia) {
+        this.socialMedia = socialMedia;
     }
 }

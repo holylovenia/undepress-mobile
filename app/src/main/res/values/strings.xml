@@ -18,4 +18,8 @@
     <string name="log_out">Log out</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_address">Enter your address</string>
+    <string name="enter_your_phone">Enter your phone</string>
+    <string name="register_button">Register</string>
 </resources>

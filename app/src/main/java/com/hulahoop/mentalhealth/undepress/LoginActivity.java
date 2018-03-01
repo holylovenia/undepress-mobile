@@ -16,17 +16,25 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hulahoop.mentalhealth.undepress.loaders.AccountLoginTaskLoader;
+import com.hulahoop.mentalhealth.undepress.loaders.AccountTaskLoader;
+import com.hulahoop.mentalhealth.undepress.models.Patient;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity implements LoaderManager
         .LoaderCallbacks<String> {
 
-    Button loginButton;
-    EditText mInputEmail, mInputPassword;
-    SharedPreferences mPreferences;
-    ConnectivityManager connectivityManager;
+    private Button loginButton;
+    private EditText mInputEmail, mInputPassword;
+    private SharedPreferences mPreferences;
+    private ConnectivityManager connectivityManager;
+    private TextView createOneText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager
 
         mInputEmail = findViewById(R.id.login_input_email);
         mInputPassword = findViewById(R.id.login_input_password);
+        createOneText = findViewById(R.id.create_one);
+
+        createOneText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -100,26 +118,55 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager
 
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
-        return new AccountLoginTaskLoader(this, args.getString("email"), args.getString
-                ("password"));
+        switch (id) {
+            case 0:
+                return new AccountLoginTaskLoader(this, args.getString("email"), args.getString
+                        ("password"));
+            case 1:
+                return new AccountTaskLoader(this, mPreferences.getString("access_token", "defaultaccesstoken"));
+            default:
+                return null;
+        }
     }
 
     @Override
-    public void onLoadFinished(Loader<String> loader, String access_token) {
-        try {
-            Log.d("LoginActivity", access_token);
-            if (!access_token.trim().equals("ACCOUNT_LOGIN_INVALID")) {
-                SharedPreferences.Editor preferencesEditor = mPreferences.edit();
-                preferencesEditor.putString("access_token", access_token);
-                preferencesEditor.apply();
+    public void onLoadFinished(Loader<String> loader, String data) {
+        switch (loader.getId()) {
+            case 0:
+                try {
+                    Log.d("LoginActivity", data);
+                    if (!data.trim().equals("ACCOUNT_LOGIN_INVALID")) {
+                        SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+                        preferencesEditor.putString("access_token", data);
+                        preferencesEditor.apply();
 
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "credential_incorrect", Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
+                        getSupportLoaderManager().initLoader(1, null, this);
+
+                        Intent intent = new Intent(this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(this, "credential_incorrect", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+                break;
+            case 1:
+                try {
+                    JSONObject patientJsonObject = new JSONArray(data).getJSONObject(0);
+//                    int id = patientJsonObject.getInt("user_id");
+                    String name = patientJsonObject.getString("name");
+//                    String email = patientJsonObject.getString("email");
+//                    String address = patientJsonObject.getString("address");
+//                    String phone = patientJsonObject.getString("phone");
+//                    Patient patient = new Patient(id, name, email, address, phone);
+                    SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+                    preferencesEditor.putString("current_user_name", name);
+                    preferencesEditor.apply();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
