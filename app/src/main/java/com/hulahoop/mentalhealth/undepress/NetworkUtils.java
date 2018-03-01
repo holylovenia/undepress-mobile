@@ -17,8 +17,7 @@ public class NetworkUtils {
     private static final String BASE_URL = "http://undepress.southeastasia.cloudapp.azure.com/";
 
     public static String getResponse(String path, String requestMethod, String formParameters,
-                                     String
-                                             accessToken) {
+                                     String accessToken) {
         HttpURLConnection urlConnection = null;
         BufferedReader bufferedReader = null;
         String result;
@@ -26,12 +25,14 @@ public class NetworkUtils {
         try {
             URL requestURL = new URL(BASE_URL + path);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
-            urlConnection.setDoInput(true);
-            urlConnection.setDoOutput(true);
             urlConnection.setRequestMethod(requestMethod);
+            if(!urlConnection.getRequestMethod().equals("GET")) {
+                urlConnection.setDoInput(true);
+                urlConnection.setDoOutput(true);
+            }
             urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             urlConnection.setRequestProperty("charset", "utf-8");
-            urlConnection.setRequestProperty("Authorization", accessToken);
+            urlConnection.setRequestProperty("Authorization", accessToken.trim());
             urlConnection.connect();
             Log.d("NetworkUtils", "Done_Connecting");
 
@@ -48,7 +49,7 @@ public class NetworkUtils {
             if (HttpResult == HttpURLConnection.HTTP_OK) {
                 bufferedReader = new BufferedReader(new InputStreamReader(
                         urlConnection.getInputStream(), "utf-8"));
-                String line = null;
+                String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     stringBuffer.append(line + "\n");
                 }
@@ -63,7 +64,8 @@ public class NetworkUtils {
                 bufferedReader.close();
             }
             Log.d("NetworkUtils_RESULT", stringBuffer.toString());
-            result = stringBuffer.toString();
+            result = stringBuffer.toString().trim();
+            return result;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,6 +83,5 @@ public class NetworkUtils {
                 }
             }
         }
-        return result;
     }
 }

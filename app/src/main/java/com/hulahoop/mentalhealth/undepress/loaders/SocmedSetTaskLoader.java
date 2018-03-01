@@ -20,8 +20,7 @@ public class SocmedSetTaskLoader extends AsyncTaskLoader<String> {
 
     public SocmedSetTaskLoader(Context context, String accessToken, String twitter, String
             facebook, String instagram) {
-        super(context);
-        Log.d("SocmedTaskLoader", accessToken);
+        super(context);Log.d("SocmedTaskLoader", accessToken);
         mAccessToken = accessToken;
         mTwitter = twitter;
         mFacebook = facebook;

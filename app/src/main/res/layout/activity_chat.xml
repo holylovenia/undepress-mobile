@@ -38,7 +38,7 @@
             android:textSize="18sp" />
 
         <ListView
-            android:id="@+id/chatActivity_chatList"
+            android:id="@+id/chat_listview"
             style="@style/ChatsListView"
             android:layout_above="@id/type_message" />
 

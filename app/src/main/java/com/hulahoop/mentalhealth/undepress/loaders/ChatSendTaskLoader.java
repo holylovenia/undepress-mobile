@@ -14,15 +14,15 @@ import java.net.URLEncoder;
 
 public class ChatSendTaskLoader extends AsyncTaskLoader<String> {
     private String mAccessToken;
-    private int mReceiverId;
+    private int mTheirId;
     private String mMessage;
     private String mTimestamp;
 
-    public ChatSendTaskLoader(Context context, String accessToken, int receiverId, String
+    public ChatSendTaskLoader(Context context, String accessToken, int theirId, String
             message, String timestamp) {
         super(context);
         mAccessToken = accessToken;
-        mReceiverId = receiverId;
+        mTheirId = theirId;
         mMessage = message;
         mTimestamp = timestamp;
     }
@@ -36,7 +36,7 @@ public class ChatSendTaskLoader extends AsyncTaskLoader<String> {
     public String loadInBackground() {
         String formParameters = null;
         try {
-            formParameters = "receiver_id=" + URLEncoder.encode(String.valueOf(mReceiverId),
+            formParameters = "receiver_id=" + URLEncoder.encode(String.valueOf(mTheirId),
                     "UTF-8");
             formParameters += "&message=" + URLEncoder.encode(mMessage, "UTF-8");
             formParameters += "&timestamp=" + URLEncoder.encode(mTimestamp, "UTF-8");
@@ -44,6 +44,6 @@ public class ChatSendTaskLoader extends AsyncTaskLoader<String> {
             e.printStackTrace();
         }
         Log.d("ChatSend Param", formParameters);
-        return NetworkUtils.getResponse("chat/send", "POST", formParameters, mAccessToken);
+        return NetworkUtils.getResponse("chat/send/", "POST", formParameters, mAccessToken);
     }
 }

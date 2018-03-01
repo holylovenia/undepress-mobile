@@ -107,7 +107,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderManager
     @Override
     public void onLoadFinished(Loader<String> loader, String access_token) {
         try {
-            if (!access_token.equals("ACCOUNT_LOGIN_INVALID")) {
+            Log.d("LoginActivity", access_token);
+            if (!access_token.trim().equals("ACCOUNT_LOGIN_INVALID")) {
                 SharedPreferences.Editor preferencesEditor = mPreferences.edit();
                 preferencesEditor.putString("access_token", access_token);
                 preferencesEditor.apply();

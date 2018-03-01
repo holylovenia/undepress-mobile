@@ -8,9 +8,9 @@ public class Expert extends User {
     private String experience;
     private String description;
 
-    public Expert(String name, String description, String address, String phoneNumber, String
+    public Expert(int id, String name, String description, String address, String phoneNumber, String
             email, String experience) {
-        super(name, email, address, phoneNumber);
+        super(id, name, email, address, phoneNumber);
         this.description = description;
         this.experience = experience;
     }

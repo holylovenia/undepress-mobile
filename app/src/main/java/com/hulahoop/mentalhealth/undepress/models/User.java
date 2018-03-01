@@ -7,12 +7,14 @@ import java.io.Serializable;
  */
 
 public class User implements Serializable {
+    private int id;
     private String name;
     private String email;
     private String address;
     private String phoneNumber;
 
-    public User(String name, String email, String address, String phoneNumber) {
+    public User(int id, String name, String email, String address, String phoneNumber) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
@@ -49,5 +51,13 @@ public class User implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

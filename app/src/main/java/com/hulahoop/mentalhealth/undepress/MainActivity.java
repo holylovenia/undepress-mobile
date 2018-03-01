@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             actionBar.setElevation(0);
         }
 
-        mPreferences = getApplicationContext().getSharedPreferences("authorization", MODE_PRIVATE);
+        mPreferences = getSharedPreferences("authorization", MODE_PRIVATE);
 
         String[] fragmentTitles = getResources().getStringArray(R.array.fragments);
 
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
-        return new SocmedSetTaskLoader(this, mPreferences.getString("accesss_token", "defaultaccesstoken"), (String) args.get("twitter"), (String) args.get("facebook"), (String) args.get("instagram"));
+        return new SocmedSetTaskLoader(this, mPreferences.getString("access_token", "defaultaccesstoken"), (String) args.get("twitter"), (String) args.get("facebook"), (String) args.get("instagram"));
     }
 
     @Override

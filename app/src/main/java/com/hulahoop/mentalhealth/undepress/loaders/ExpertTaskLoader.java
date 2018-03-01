@@ -7,17 +7,15 @@ import android.util.Log;
 import com.hulahoop.mentalhealth.undepress.NetworkUtils;
 
 /**
- * Created by agoun on 2/27/2018.
+ * Created by holy on 27/02/18.
  */
 
-public class ChatTaskLoader extends AsyncTaskLoader<String> {
+public class ExpertTaskLoader extends AsyncTaskLoader<String> {
     private String mAccessToken;
-    private int mTheirId;
 
-    public ChatTaskLoader(Context context, String accessToken, int theirId) {
+    public ExpertTaskLoader(Context context, String accessToken) {
         super(context);
         mAccessToken = accessToken;
-        mTheirId = theirId;
     }
 
     @Override
@@ -27,8 +25,6 @@ public class ChatTaskLoader extends AsyncTaskLoader<String> {
 
     @Override
     public String loadInBackground() {
-        String urlParameters = "?their_id" + mTheirId;
-        Log.d("Chat Param", urlParameters);
-        return NetworkUtils.getResponse("chat/" + urlParameters, "GET", null, mAccessToken);
+        return NetworkUtils.getResponse("expert/", "GET", null, mAccessToken);
     }
 }
