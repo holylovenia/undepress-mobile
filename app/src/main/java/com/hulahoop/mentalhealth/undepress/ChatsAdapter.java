@@ -27,6 +27,7 @@ public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
 
     public void setChats(List<ChatBubble> chats) {
         this.chats = chats;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -64,7 +65,7 @@ public class ChatsAdapter extends ArrayAdapter<ChatBubble> {
         private TextView message;
 
         public ViewHolder(View view) {
-            message = (TextView) view.findViewById(R.id.bubbleChat_message);
+            message = view.findViewById(R.id.bubbleChat_message);
         }
     }
 }

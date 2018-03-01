@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,11 +44,14 @@ public class ChatActivity extends AppCompatActivity implements LoaderManager.Loa
 
         expert = (Expert) getIntent().getSerializableExtra("current_expert");
 
+        adapter = new ChatsAdapter(this, R.layout.chat_bubble_left, chatLog);
+        chatListView = findViewById(R.id.chat_listview);
+        chatListView.setAdapter(adapter);
+
         if (chatLog.size() == 0) {
+            Log.d("ChatActivity", "FETCH WOI");
             getSupportLoaderManager().initLoader(1, null, this);
         }
-
-        adapter = new ChatsAdapter(this, R.layout.chat_bubble_left, chatLog);
 
         sendButton = findViewById(R.id.send_button);
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -58,14 +62,14 @@ public class ChatActivity extends AppCompatActivity implements LoaderManager.Loa
                 } else {
                     chatLog.add(new ChatBubble(inputMessage.getText().toString(), true));
                     sendChat();
-                    adapter.notifyDataSetChanged();
+                    adapter.setChats(chatLog);
+                    inputMessage.setText("");
                 }
 
             }
         });
 
         inputMessage = findViewById(R.id.type_message);
-        chatListView = findViewById(R.id.chat_listview);
 
         setTitle(expert.getName());
     }
@@ -109,8 +113,11 @@ public class ChatActivity extends AppCompatActivity implements LoaderManager.Loa
                         chatLog.add(temp);
                     }
 
-                    adapter = new ChatsAdapter(this, R.layout.chat_bubble_left, chatLog);
-                    chatListView.setAdapter(adapter);
+                    Log.d("ISI CHAT LOG", chatLog.size() + "");
+
+                    adapter.setChats(chatLog);
+                    adapter.notifyDataSetChanged();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
