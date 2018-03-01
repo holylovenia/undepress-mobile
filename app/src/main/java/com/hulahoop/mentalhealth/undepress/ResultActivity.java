@@ -43,25 +43,41 @@ public class ResultActivity extends AppCompatActivity {
             actionBar.hide();
         }
 
-        int sum = 0;
-        boolean requiredRulesFulfilled = true;
-        requiredRulesFulfilled = !(symptoms.getSum().get(0) == 0 || symptoms.getSum().get(0) == 0);
+        if(symptoms.getSum().size() > 0) {
 
-        StringBuilder details = new StringBuilder();
-        for(int i = 0; i < symptoms.getSum().size(); i++) {
-            if(symptoms.getSum().get(i) == 1) {
-                sum++;
-                details.append(sum).append(". ").append(symptoms.getSymptomDescription().get(i)).append("\n");
+            boolean requiredRulesFulfilled;
+            if (symptoms.getSum().size() == 0 || symptoms.getSum().get(0) == 0 || symptoms.getSum().get(0) == 0) {
+                requiredRulesFulfilled = false;
+            } else {
+                requiredRulesFulfilled = true;
             }
-        }
 
-        numberOfDepressionSymptomsText.setText(sum + " of 9");
-        symptomsDetails.setText(details.toString().trim());
+            int sum = 0;
 
-        if(requiredRulesFulfilled && sum >= 5) {
-            depressionVerdictText.setText("have");
+            StringBuilder details = new StringBuilder();
+            for (int i = 0; i < symptoms.getSum().size(); i++) {
+                if (symptoms.getSum().get(i) == 1) {
+                    sum++;
+                    details.append(sum).append(". ").append(symptoms.getSymptomDescription().get(i)).append("\n");
+                }
+            }
+
+            if (sum == 0) {
+                details.append("You have no symptoms");
+            }
+            symptomsDetails.setText(details.toString().trim());
+
+            numberOfDepressionSymptomsText.setText(sum + " of 9");
+
+            if (requiredRulesFulfilled && sum >= 5) {
+                depressionVerdictText.setText("have");
+            } else {
+                depressionVerdictText.setText("do not have");
+            }
         } else {
-            depressionVerdictText.setText("do not have");
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         getBetterButton = findViewById(R.id.get_better_button);

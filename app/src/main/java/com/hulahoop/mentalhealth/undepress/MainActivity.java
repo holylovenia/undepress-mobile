@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             inputBundle.putString("facebook", null);
             inputBundle.putString("instagram", username);
         }
-        getSupportLoaderManager().restartLoader(0, inputBundle, this);
+        getSupportLoaderManager().restartLoader(4, inputBundle, this);
     }
 
     @Override
